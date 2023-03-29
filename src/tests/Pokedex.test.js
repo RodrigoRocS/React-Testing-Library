@@ -82,23 +82,22 @@ describe('Teste o componente <Pokedex.js />', () => {
     userEvent.click(btn);
     screen.getByText(/Pikachu/i);
   });
-});
-
-test('Testa o filtro por tipo', () => {
-  const fireBtn = screen.getByRole('button', {
-    name: /fire/i,
-  });
-  userEvent.click(fireBtn);
-  const btn = screen.getByRole('button', {
-    name: /próximo pokémon/i,
-  });
-  pokemonList.forEach((e) => {
-    if (e.type === fireBtn.innerHTML) {
-      expect(screen.getByText(`${e.name}`)).toBeInTheDocument();
-      userEvent.click(btn);
-    }
-  });
-  screen.getByRole('button', {
-    name: /all/i,
+  test('Testa o filtro por tipo', () => {
+    const fireBtn = screen.getByRole('button', {
+      name: /fire/i,
+    });
+    userEvent.click(fireBtn);
+    const btn = screen.getByRole('button', {
+      name: /próximo pokémon/i,
+    });
+    pokemonList.forEach((e) => {
+      if (e.type === fireBtn.innerHTML) {
+        expect(screen.getByText(`${e.name}`)).toBeInTheDocument();
+        userEvent.click(btn);
+      }
+    });
+    screen.getByRole('button', {
+      name: /all/i,
+    });
   });
 });
