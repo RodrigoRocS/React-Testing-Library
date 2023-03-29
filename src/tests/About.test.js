@@ -3,15 +3,16 @@ import renderWithRouter from '../renderWithRouter';
 import About from '../pages/About';
 
 describe('Teste se a página contém as informações sobre a Pokédex', () => {
-  test('Teste se a página contém um heading h2 com o texto About Pokédex;', () => {
+  beforeEach(() => {
     renderWithRouter(<About />);
+  });
+  test('Teste se a página contém um heading h2 com o texto About Pokédex;', () => {
     screen.getByRole('heading', {
       name: /about pokédex/i,
       level: 2,
     });
   });
   test('Teste se a página contém dois parágrafos com texto sobre a Pokédex;', () => {
-    renderWithRouter(<About />);
     screen.getByText(
       /this application simulates a pokédex, a digital encyclopedia containing all pokémon/i,
     );
@@ -20,7 +21,6 @@ describe('Teste se a página contém as informações sobre a Pokédex', () => {
     );
   });
   test('Teste se a página contém a seguinte imagem de uma Pokédex:', () => {
-    renderWithRouter(<About />);
     const img = screen.getByRole('img', {
       name: /pokédex/i,
     });

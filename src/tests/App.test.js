@@ -5,20 +5,20 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Teste se o topo da aplicação contém um conjunto fixo de links de navegação:', () => {
-  test('O primeiro link deve possuir o texto Home', () => {
+  beforeEach(() => {
     renderWithRouter(<App />);
+  });
+  test('O primeiro link deve possuir o texto Home', () => {
     screen.getByRole('link', {
       name: /home/i,
     });
   });
   test('O segundo link deve possuir o texto About;', () => {
-    renderWithRouter(<App />);
     screen.getByRole('link', {
       name: /about/i,
     });
   });
   test('O terceiro link deve possuir o texto Favorite Pokémon', () => {
-    renderWithRouter(<App />);
     screen.getByRole('link', {
       name: /Favorite Pokémon/i,
     });
