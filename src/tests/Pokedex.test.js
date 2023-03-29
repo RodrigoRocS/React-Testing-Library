@@ -85,7 +85,6 @@ describe('Teste o componente <Pokedex.js />', () => {
 });
 
 test('Testa o filtro por tipo', () => {
-  renderWithRouter(<App />);
   const fireBtn = screen.getByRole('button', {
     name: /fire/i,
   });
